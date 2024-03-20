@@ -1,5 +1,5 @@
 # MP project 2024 feb 6
-baller
+case study drawing coming tonight probably
 - [ ] music player
 - [ ] drawing program
 - [x] images in readme
