@@ -1,5 +1,5 @@
 # MP project 2024 feb 6
-baller
+case study drawing coming tonight probably
 - [ ] music player
 - [ ] drawing program
 - [x] images in readme
@@ -12,7 +12,7 @@ baller
 - [ ] hitboxes but for websites
 - [ ] graphic design is my passion
 - [ ] pray nothing breaks immediately so i can have at least 10 minutes of peace
-- [ ] <del>something will break immediately<del>
-- [ ] fix anything that breaks with <del>hot glue and duct tape<del> hard work(?)
+- [x] <del>something will break immediately<del>
+- [ ] fix anything that breaks with <del>hot glue and duct tape</del> the power of friendship or something
+- [x] something broke immediately :3
 - [ ] comeplete to do list, or as much as i realistically can
-- [ ] um uhuuuh m ummm
