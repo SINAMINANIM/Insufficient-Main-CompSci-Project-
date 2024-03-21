@@ -13,5 +13,6 @@ baller
 - [ ] graphic design is my passion
 - [ ] pray nothing breaks immediately so i can have at least 10 minutes of peace
 - [ ] <del>something will break immediately<del>
-- [ ] fix anything that breaks with <del>hot glue and duct tape<del>
+- [ ] fix anything that breaks with <del>hot glue and duct tape<del> hard work(?)
 - [ ] comeplete to do list, or as much as i realistically can
+- [ ] um uhuuuh m ummm
