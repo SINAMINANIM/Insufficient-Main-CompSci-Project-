@@ -1,5 +1,5 @@
 # MP project 2024 feb 6
-case study drawing coming tonight probably
+case study drawing coming... eventually.......
 - [ ] music player
 - [ ] drawing program
 - [x] images in readme
