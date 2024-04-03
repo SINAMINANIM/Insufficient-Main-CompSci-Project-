@@ -6,6 +6,13 @@ void setup() {
   //NULL: all values are null until size(), otherwise arithmetic errors
   //ngl i forgot two forward slashes negates(?) code 
   println("example formula: add 1 to the width", width+1);
+  //DISPLAY: canvas and fullscreen
+  size(400, 500);
+  //fullScreen();
+  appWidth = width;
+  appHeight = Height;
+  println(appWidth, appHeight);
+  //continue on line 12 friday or tomorrow
 } //End setup
 //
 void draw() {
