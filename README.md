@@ -6,8 +6,8 @@ case study drawing coming... eventually.......
 - [ ] make geometry 
 - [ ] SgR
 - [ ] SrKo
-- [ ] half of a Dimn
-- [ ] sDr?
+- [ ] Dimn
+- [ ] ChRiego
 - [ ] RITIGO
 - [ ] hitboxes but for uuuu
 - [ ] graphic design is my passion
