@@ -1,14 +1,11 @@
 # MP project 2024 feb 6
-case study drawing coming... eventually.......
 - [ ] music player
-- [ ] drawing program
 - [x] images in readme
 - [ ] make geometry 
-- [ ] SgR
+- [x] SgR
 - [ ] SrKo
-- [ ] Dimn
 - [ ] ChRiego
-- [ ] RITIGO
+- [x] RITIGO
 - [ ] hitboxes but for uuuu
 - [ ] graphic design is my passion
 - [ ] pray nothing breaks immediately so i can have at least 10 minutes of peace
