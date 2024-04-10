@@ -26,21 +26,21 @@ void setup() {
   backgroundWidth = appWidth; 
   backgroundHeight = appHeight;
   playButtonX = appWidth*4/9;
-  playButtonY = appHeight*7/9;
+  playButtonY = appHeight*85/100;
   playButtonWidth = appWidth*1/12;
   playButtonHeight = appHeight*1/10;
   nextSongButtonX = appWidth*6/9;
-  nextSongButtonY = appHeight*7/9;
+  nextSongButtonY = appHeight*85/100;
   nextSongButtonWidth = appWidth*1/13;
   nextSongButtonHeight = appHeight*1/11;
   albumX = appWidth;
   albumY = appHeight;
   albumWidth = appWidth;
   albumHeight = appHeight;
-  homeButtonX = appWidth;
-  homeButtonY = appHeight;
-  homeButtonWidth = appWidth;
-  homeButtonHeight = appHeight;
+  homeButtonX = appWidth*4/64;
+  homeButtonY = appHeight*9/100;
+  homeButtonWidth = appWidth*1/16;
+  homeButtonHeight = appHeight*1/13;
   //layout DIVISIONs (DIVs)
   //rect(X, Y, Width, Height);
   rect(backgroundX, backgroundY, backgroundWidth, backgroundHeight);
@@ -49,12 +49,11 @@ void setup() {
   //rect(centerX*1/2, centerY*1/2, appWidth*1/2, appHeight*1/2);
   rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
   //rect(albumX*1/2, albumY*1/2, albumWidth*1/2, albumHeight*1/2);
-  //rect(homeButtonX, homeButtonY, homeButtonWidth, homeButtonHeight);
+  rect(homeButtonX, homeButtonY, homeButtonWidth, homeButtonHeight);
   rect(nextSongButtonX, nextSongButtonY, nextSongButtonWidth, nextSongButtonHeight);
+  //rect(prevSongButtonX, prevSongButtonY, prevSongButtonWidth, prevSongButtonHeight);
   
   /*
-  rect(prevSongButtonX, prevSongButtonY, prevSongButtonWidth, prevSongButtonHeight);
-  rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
   rect(runTimerX, runTimerY, runTimerWidth, runTimerHeight);
   rect(buttonHolderX, buttonHolderY, buttonHolderWidth, buttonHolderHeight);
   rect(currentAudioTimeX, currentAudioTimeY, currentAudioTimeWidth, currentAudioTimeHeight);
