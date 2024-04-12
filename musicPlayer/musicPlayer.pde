@@ -4,6 +4,7 @@ float backgroundX, backgroundY, backgroundWidth, backgroundHeight;
 float playButtonX, playButtonY, playButtonWidth, playButtonHeight;
 float albumX, albumY, albumWidth, albumHeight;
 float homeButtonX, homeButtonY, homeButtonWidth, homeButtonHeight;
+float settingsX, settingY, settingsWidth, settingsHeight;
 float nextSongButtonX, nextSongButtonY, nextSongButtonWidth, nextSongButtonHeight;
 float prevSongButtonX, prevSongButtonY, prevSongButtonWidth, prevSongButtonHeight;
 float runTimeX, runTimeY, runTimeWidth, runTimeHeight;
@@ -13,6 +14,8 @@ float volumeSliderX, volumeSliderY, volumeSliderWidth, volumeSliderHeight;
 float volumeIconX, volumeIconY, volumeIconWidth, volumeIconHeight;
 float songNameX, songNameY, songNameWidth, songNameHeight;
 float authorNameX, authorNameY, authorNameWidth, authorNameHeight;
+float volumeSliderIndicatorX, volumeSliderIndicatorY, volumeSliderIndicatorWidth, volumeSliderIndicatorHeight;
+
 //
 void setup() {
   println("Hewwo Wowld OwO");
@@ -28,15 +31,15 @@ void setup() {
   //println(appWidth, appHeight);
   String displayInstructions = ( appWidth >= appHeight ) ? "we're good ^q^": "WHAT ARE YOU DOING";
   println(displayInstructions);
-  //populatoe
+  //population VV
   backgroundX = appWidth*0;
   backgroundY = appHeight*0;
   backgroundWidth = appWidth; 
   backgroundHeight = appHeight;
   playButtonX = appWidth*4/9;
-  playButtonY = appHeight*85/100;
+  playButtonY = appHeight*84/100;
   playButtonWidth = appWidth*1/12;
-  playButtonHeight = appHeight*1/10;
+  playButtonHeight = appHeight*1/9;
   nextSongButtonX = appWidth*97/144;
   nextSongButtonY = appHeight*85/100;
   nextSongButtonWidth = appWidth*1/13;
@@ -53,6 +56,10 @@ void setup() {
   homeButtonY = appHeight*7/100;
   homeButtonWidth = appWidth*1/16;
   homeButtonHeight = appHeight*1/13;
+  settingsX = appWidth*57/64;
+  settingY = appHeight*7/100;
+  settingsWidth = appWidth*1/16;
+  settingsHeight = appHeight*1/13;
   runTimeX = appWidth*1/4;
   runTimeY = appHeight*76/100;
   runTimeWidth = appWidth*1/2;
@@ -73,6 +80,14 @@ void setup() {
   volumeIconY = appHeight*131/200;
   volumeIconWidth = appWidth*7/128;
   volumeIconHeight = appHeight*10/128;
+  authorNameX = appWidth*2/5;
+  authorNameY = appHeight*10/100;
+  authorNameWidth = appWidth*1/5;
+  authorNameHeight = appHeight*3/100;
+  songNameX = appWidth*1/3;
+  songNameY = appHeight*15/100;
+  songNameWidth = appWidth*1/3;
+  songNameHeight = appHeight*4/100;
   //layout DIVISIONs (DIVs)
   //rect(X, Y, Width, Height);
   rect(backgroundX, backgroundY, backgroundWidth, backgroundHeight);
@@ -89,11 +104,14 @@ void setup() {
   rect(currentAudioTimeX, currentAudioTimeY, currentAudioTimeWidth, currentAudioTimeHeight);
   rect(volumeSliderX, volumeSliderY, volumeSliderWidth, volumeSliderHeight);
   rect(volumeIconX, volumeIconY, volumeIconWidth, volumeIconHeight);
-  /*
-  rect(songNameX, songNameY, songNameWidth, songNameHeight);
-  rect(authorNameX, authorNameY, authorNameWidth, authorNameHeight);
   rect(volumeSliderIndicatorX, volumeSliderIndicatorY, volumeSliderIndicatorWidth, volumeSliderIndicatorHeight);
+  rect(authorNameX, authorNameY, authorNameWidth, authorNameHeight);
+  rect(songNameX, songNameY, songNameWidth, songNameHeight);
+  rect(settingsX, settingY, settingsWidth, settingsHeight);
+  
+  /*
   rect(songSliderIndicatorX, songSliderIndicatorY, songSliderIndicatorWidth, songSliderIndicatorHeight);
+  rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
   */
 } //End setup
 //
