@@ -15,7 +15,11 @@ float volumeIconX, volumeIconY, volumeIconWidth, volumeIconHeight;
 float songNameX, songNameY, songNameWidth, songNameHeight;
 float authorNameX, authorNameY, authorNameWidth, authorNameHeight;
 float volumeSliderIndicatorX, volumeSliderIndicatorY, volumeSliderIndicatorWidth, volumeSliderIndicatorHeight;
-
+float exitButtonContainerX, exitButtonContainerY, exitButtonContainerWidth, exitButtonContainerHeight;
+float exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight;
+//
+color backgroundColour, darkBackground, lightBackground;
+boolean whiteMode=false;
 //
 void setup() {
   println("Hewwo Wowld OwO");
@@ -34,7 +38,7 @@ void setup() {
   //population VV
   backgroundX = appWidth*0;
   backgroundY = appHeight*0;
-  backgroundWidth = appWidth; 
+  backgroundWidth = appWidth;
   backgroundHeight = appHeight;
   playButtonX = appWidth*4/9;
   playButtonY = appHeight*84/100;
@@ -88,34 +92,55 @@ void setup() {
   songNameY = appHeight*15/100;
   songNameWidth = appWidth*1/3;
   songNameHeight = appHeight*4/100;
+  exitButtonContainerX = appWidth*112/128;
+  exitButtonContainerY = appHeight*85/100;
+  exitButtonContainerWidth = appWidth*23/240;
+  exitButtonContainerHeight = appHeight*14/120;
+  exitButtonX = appWidth*57/64;
+  exitButtonY = appHeight*87/100;
+  exitButtonWidth = appWidth*1/16;
+  exitButtonHeight = appHeight*1/13;
   //layout DIVISIONs (DIVs)
   //rect(X, Y, Width, Height);
-  rect(backgroundX, backgroundY, backgroundWidth, backgroundHeight);
+  //rect(backgroundX, backgroundY, backgroundWidth, backgroundHeight);
   int centerX = appWidth*1/2;
   int centerY = appHeight*1/2;
   //rect(centerX*1/2, centerY*1/2, appWidth*1/2, appHeight*1/2);
-  rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
-  rect(nextSongButtonX, nextSongButtonY, nextSongButtonWidth, nextSongButtonHeight);
-  rect(prevSongButtonX, prevSongButtonY, prevSongButtonWidth, prevSongButtonHeight);
-  rect(albumX, albumY, albumWidth, albumHeight);
-  rect(homeButtonX, homeButtonY, homeButtonWidth, homeButtonHeight);
-  rect(runTimeX, runTimeY, runTimeWidth, runTimeHeight);
-  rect(totalAudioTimeX, totalAudioTimeY, totalAudioTimeWidth, totalAudioTimeHeight);
-  rect(currentAudioTimeX, currentAudioTimeY, currentAudioTimeWidth, currentAudioTimeHeight);
-  rect(volumeSliderX, volumeSliderY, volumeSliderWidth, volumeSliderHeight);
-  rect(volumeIconX, volumeIconY, volumeIconWidth, volumeIconHeight);
-  rect(volumeSliderIndicatorX, volumeSliderIndicatorY, volumeSliderIndicatorWidth, volumeSliderIndicatorHeight);
-  rect(authorNameX, authorNameY, authorNameWidth, authorNameHeight);
-  rect(songNameX, songNameY, songNameWidth, songNameHeight);
-  rect(settingsX, settingY, settingsWidth, settingsHeight);
-  
   /*
-  rect(songSliderIndicatorX, songSliderIndicatorY, songSliderIndicatorWidth, songSliderIndicatorHeight);
+  rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
+   rect(nextSongButtonX, nextSongButtonY, nextSongButtonWidth, nextSongButtonHeight);
+   rect(prevSongButtonX, prevSongButtonY, prevSongButtonWidth, prevSongButtonHeight);
+   rect(albumX, albumY, albumWidth, albumHeight);
+   rect(homeButtonX, homeButtonY, homeButtonWidth, homeButtonHeight);
+   rect(runTimeX, runTimeY, runTimeWidth, runTimeHeight);
+   rect(songSliderIndicatorX, songSliderIndicatorY, songSliderIndicatorWidth, songSliderIndicatorHeight);
+   rect(totalAudioTimeX, totalAudioTimeY, totalAudioTimeWidth, totalAudioTimeHeight);
+   rect(currentAudioTimeX, currentAudioTimeY, currentAudioTimeWidth, currentAudioTimeHeight);
+   rect(volumeSliderX, volumeSliderY, volumeSliderWidth, volumeSliderHeight);
+   rect(volumeIconX, volumeIconY, volumeIconWidth, volumeIconHeight);
+   rect(volumeSliderIndicatorX, volumeSliderIndicatorY, volumeSliderIndicatorWidth, volumeSliderIndicatorHeight);
+   rect(authorNameX, authorNameY, authorNameWidth, authorNameHeight);
+   rect(songNameX, songNameY, songNameWidth, songNameHeight);
+   rect(settingsX, settingY, settingsWidth, settingsHeight);
+   rect(exitButtonContainerX, exitButtonContainerY, exitButtonContainerWidth, exitButtonContainerHeight);
+   */
   rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
-  */
+  //variable pop
+  lightBackground = 255;
+  //whiteMode = true; must ask to see blue light
+  darkBackground = 0; //greyscale is smaller than color, better for system performance
+  if (hour() >=9 && hour() <=17) backgroundColour = lightBackground;
+  if (hour() <9 && hour() >17) backgroundColour = darkBackground;
+  if (whiteMode==true && hour() >=9 && hour() <=17) {
+    backgroundColour = lightBackground;
+  } else {
+    backgroundColour = darkBackground;
+  }
 } //End setup
 //
 void draw() {
+  background(backgroundColour); //greyscale
+  //rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
 } //End draw
 //
 void keyPressed() {
