@@ -18,9 +18,11 @@ float volumeSliderIndicatorX, volumeSliderIndicatorY, volumeSliderIndicatorWidth
 float exitButtonContainerX, exitButtonContainerY, exitButtonContainerWidth, exitButtonContainerHeight;
 float exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight;
 //
+//
 color backgroundColour, foregroundColour, lightlessBackground=0, darklessBackground=255; //greyscale is smaller than color, better for system performance
-color White=255, Yellow=#FFFF00, Black=0; // hexademical, its base 16 thats so cool
-boolean whiteMode=true;
+color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF; // hexademical, its base 16 thats so cool
+boolean whiteMode=false;
+//
 //
 void setup() {
   println("Hewwo Wowld OwO");
@@ -131,28 +133,40 @@ void setup() {
   //if (hour() <9 && hour() >17) backgroundColour = lightlessBackground;
   if (whiteMode==true && hour() >=9 && hour() <=17) {
     backgroundColour = darklessBackground;
-    foregroundColour = #FFFFFF;
+    foregroundColour = 0;
   } else {
     backgroundColour = lightlessBackground;
-    foregroundColour = #FFFF00; //*ring ring ring* "yellow?" : if (hour() <9 && hour() >17)
-    if (hour() >=9 && hour() <=17) foregroundColour = 255;
+    foregroundColour = Yellow; //*ring ring ring* "yellow?" : if (hour() <9 && hour() >17)
+    if (hour() >=9 && hour() <=17) foregroundColour = White;
   }
 } //End setup
 //
 void draw() {
   background(backgroundColour);
-  fill(foregroundColour);
+  //fill(ourple);
+  //if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) fill(Yellow);
   rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
+  fill(ourple);
+  if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) {
+     fill(Yellow);
+     rect( exitButtonX+exitButtonWidth*1/7, exitButtonY+exitButtonHeight*1/7, exitButtonWidth*5/7, exitButtonHeight*5/7 );
+     fill(ourple);
+  } else {
+     fill(ourple);
+  }
+  println(mouseX, mouseY);
 } //End draw
 //
 void keyPressed() { //listener
+//if (key=='' && key==''); | letter button setup
+//if (key==CODED && keyCode==) ; | word button setup
   if (key=='Q' || key=='q') exit();
   if (key==CODED && keyCode==ESC) exit();
+  if (key=='W' && key=='w');
 } //End keyPressed
 //
 void mousePressed() { //listener 2: electric boogaloo
-//exit button
-  if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonWidth );
+  if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight )
   {
     exit();
   }
