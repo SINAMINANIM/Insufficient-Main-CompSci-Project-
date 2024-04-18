@@ -162,7 +162,7 @@ void keyPressed() { //listener
 //if (key==CODED && keyCode==) ; | word button setup
   if (key=='Q' || key=='q') exit();
   if (key==CODED && keyCode==ESC) exit();
-  if (key=='W' && key=='w');
+  if (key=='L' && key=='l');
 } //End keyPressed
 //
 void mousePressed() { //listener 2: electric boogaloo
