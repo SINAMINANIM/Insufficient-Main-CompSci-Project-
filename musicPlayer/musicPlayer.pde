@@ -1,6 +1,23 @@
+/* documentation
+library: sketch > import lib  >add lib > minim
+support webstie: https://code.compartmental.net/minim/
+ - https://code.compartmental.net/minim/audioplayer_method_loop.html
+*/
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+
 //Global Variables
+Minim minim; //adds object to access all minim functions
+AudioPlayer soundEffects1; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
+AudioPlayer playList1;
+//
 int appWidth, appHeight;
 int Size;
+//
 float backgroundX, backgroundY, backgroundWidth, backgroundHeight;
 float playButtonX, playButtonY, playButtonWidth, playButtonHeight;
 float albumX, albumY, albumWidth, albumHeight;
@@ -21,17 +38,16 @@ float exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight;
 //
 String title="Exit";
 //
-PFont generalFont;
+PFont generalFont, titleFont;
 //
 color backgroundColour, foregroundColour, lightlessBackground=0, darklessBackground=255; //greyscale is smaller than color, better for system performance
-color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF; // hexademical, its base 16 thats so cool
+color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FF0000; // hexademical, its base 16 thats so cool
 color blue=#00FFB3;
 //
 boolean whiteMode=false;
 //
 //
 void setup() {
-  println("Hewwo Wowld OwO");
   //concatenation AMD inspecting variabels w character escapes
   println("Width: "+width, "\tHeight: "+height, "\tDisplay Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
   //for NULL: all values are null until size(), otherwise arithmetic errors
@@ -45,11 +61,21 @@ void setup() {
   String displayInstructions = ( appWidth >= appHeight ) ? "we're good ^q^": "WHAT ARE YOU DOING";
   println(displayInstructions);
   //
+  minim = new Minim(this); //loadfile from project folder (mp3 file in this case)
+  String exitSound = "Winding Alarm Clock.mp3";
+  String pathwaySfx = "../audio/sfx/"; //relative path
+  //println ( pathwaySfx + exitSound );
+  String path = sketchPath( pathwaySfx + exitSound ); //absolute path
+  //println ( path );
+  //playList1 = minim.loadFile( path );
+  soundEffects1 = minim.loadFile( path );
+  //
   //fonts fron op sys
-  String[] fontList = PFont.list(); //to list all fonts on OS
-  printArray(fontList); //lists fonts
+  //String[] fontList = PFont.list(); //to list all fonts on OS
+  //printArray(fontList); //lists fonts
   Size = 32;
   generalFont = createFont("Yu Gothic UI Light", Size);
+  titleFont = createFont("Yu Gothic UI Light", Size);
   //footerFont = createFont("Yu Gothic UI Light", Size);
   //go to tools > create Font > size field, dont hit 'ok', it will kill you
   //
@@ -154,6 +180,8 @@ void setup() {
     foregroundColour = Yellow; //*ring ring ring* "yellow?" : if (hour() <9 && hour() >17)
     if (hour() >=9 && hour() <=17) foregroundColour = White;
   }
+  //
+  soundEffects1.loop(0);
 } //End setup
 //
 void draw() {
@@ -161,17 +189,15 @@ void draw() {
   //fill(ourple);
   //if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) fill(Yellow);
   rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
-  fill(ourple);
+  fill(rouge);
   if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) {
-     fill(Yellow);
+     fill(blue);
      rect( exitButtonX+exitButtonWidth*1/7, exitButtonY+exitButtonHeight*1/7, exitButtonWidth*5/7, exitButtonHeight*5/7 );
-     fill(ourple);
+     fill(rouge);
   } else {
-     fill(ourple);
+     fill(rouge);
   }
-  fill(blue); //the INK(ling)
 textAlign(CENTER, CENTER); //align x and y
-Size = 80;
 textFont(titleFont, Size);
 //textFont(footerFont, Size);
 text(title, exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
