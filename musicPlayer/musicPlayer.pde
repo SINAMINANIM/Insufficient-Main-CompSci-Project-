@@ -2,6 +2,7 @@
 library: sketch > import lib  >add lib > minim
 support webstie: https://code.compartmental.net/minim/
  - https://code.compartmental.net/minim/audioplayer_method_loop.html
+ - loop(0) seems best for sfx
 */
 import ddf.minim.*;
 import ddf.minim.analysis.*;
@@ -12,8 +13,9 @@ import ddf.minim.ugens.*;
 
 //Global Variables
 Minim minim; //adds object to access all minim functions
-AudioPlayer soundEffects1; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
-AudioPlayer playList1;
+AudioPlayer soundEffects1; 
+AudioPlayer soundEffecter2;
+AudioPlayer playList1; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
 //
 int appWidth, appHeight;
 int Size;
@@ -37,8 +39,9 @@ float exitButtonContainerX, exitButtonContainerY, exitButtonContainerWidth, exit
 float exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight;
 //
 String title="Exit";
+String playButton="('v')";
 //
-PFont generalFont, titleFont;
+PFont generalFont, titleFont, playButtonFont;
 //
 color backgroundColour, foregroundColour, lightlessBackground=0, darklessBackground=255; //greyscale is smaller than color, better for system performance
 color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FF0000; // hexademical, its base 16 thats so cool
@@ -63,12 +66,15 @@ void setup() {
   //
   minim = new Minim(this); //loadfile from project folder (mp3 file in this case)
   String exitSound = "Winding Alarm Clock.mp3";
+  String playSound = "Straw Squeak.mp3";
   String pathwaySfx = "../audio/sfx/"; //relative path
   //println ( pathwaySfx + exitSound );
   String path = sketchPath( pathwaySfx + exitSound ); //absolute path
+  String path2 = sketchPath( pathwaySfx + playSound );
   //println ( path );
   //playList1 = minim.loadFile( path );
   soundEffects1 = minim.loadFile( path );
+  soundEffecter2 = minim.loadFile( path2 );
   //
   //fonts fron op sys
   //String[] fontList = PFont.list(); //to list all fonts on OS
@@ -76,7 +82,7 @@ void setup() {
   Size = 32;
   generalFont = createFont("Yu Gothic UI Light", Size);
   titleFont = createFont("Yu Gothic UI Light", Size);
-  //footerFont = createFont("Yu Gothic UI Light", Size);
+  playButtonFont = createFont("Yu Gothic UI Light", Size);
   //go to tools > create Font > size field, dont hit 'ok', it will kill you
   //
   //population VV
@@ -151,7 +157,6 @@ void setup() {
   int centerY = appHeight*1/2;
   //rect(centerX*1/2, centerY*1/2, appWidth*1/2, appHeight*1/2);
   /*
-  rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
    rect(nextSongButtonX, nextSongButtonY, nextSongButtonWidth, nextSongButtonHeight);
    rect(prevSongButtonX, prevSongButtonY, prevSongButtonWidth, prevSongButtonHeight);
    rect(albumX, albumY, albumWidth, albumHeight);
@@ -168,6 +173,7 @@ void setup() {
    rect(settingsX, settingY, settingsWidth, settingsHeight);
    rect(exitButtonContainerX, exitButtonContainerY, exitButtonContainerWidth, exitButtonContainerHeight);
    */
+  rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
   rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
   //variable pop
   //if (hour() >=9 && hour() <=17) backgroundColour = darklessBackground;
@@ -181,7 +187,6 @@ void setup() {
     if (hour() >=9 && hour() <=17) foregroundColour = White;
   }
   //
-  soundEffects1.loop(0);
 } //End setup
 //
 void draw() {
@@ -197,11 +202,20 @@ void draw() {
   } else {
      fill(rouge);
   }
+  rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
+  fill(rouge);
+  if(mouseX>playButtonX && mouseX<playButtonX+playButtonWidth && mouseY>playButtonY && mouseY<playButtonY+playButtonHeight) {
+    fill(blue);
+    rect(playButtonX+playButtonWidth*1/7, playButtonY+playButtonHeight*1/7, playButtonWidth*5/7, playButtonHeight*5/7);
+    fill(ourple);
+  } else {
+  fill(blue);
+  }
 textAlign(CENTER, CENTER); //align x and y
 textFont(titleFont, Size);
-//textFont(footerFont, Size);
+textFont(playButtonFont, Size);
 text(title, exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
-//text(footer, footerX, footerY, footerWidth, footerHeight);
+text(playButton, playButtonX, playButtonY, playButtonWidth, playButtonHeight);
   println(mouseX, mouseY);
 } //End draw
 //
@@ -209,15 +223,18 @@ void keyPressed() { //listener
 //if (key=='' && key==''); | letter button setup
 //if (key==CODED && keyCode==) ; | word button setup
   if (key=='Q' || key=='q') exit();
+    soundEffect_1();
   if (key==CODED && keyCode==ESC) exit();
+    soundEffect_1();
   if (key=='L' && key=='l');
 } //End keyPressed
 //
-void mousePressed() { //listener 2: electric boogaloo
+void mousePressed() { //listener 2: electric boogaloo  
   if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight )
   {
-    exit();
+    soundEffect_1();
   }
 } //End mousePressed
 //
+
 // End MAIN Program

@@ -5,7 +5,7 @@ float titleX, titleY, titleWidth, titleHeight;
 float footerX, footerY, footerWidth, footerHeight;
 PFont titleFont, footerFont;
 String title="ME WHEN THEY";
-//String footer="bottom text";
+String footer="BOTTOM TEXT";
 int Size;
 color blue=#00FFB3;
 //
@@ -33,7 +33,7 @@ String[] fontList = PFont.list(); //to list all fonts on OS
 printArray(fontList); //lists fonts
 Size = 32;
 titleFont = createFont("Yu Gothic UI Light", Size);
-//footerFont = createFont("Yu Gothic UI Light", Size);
+footerFont = createFont("Yu Gothic UI Light", Size);
 //go to tools > create Font > size field, dont hit 'ok', it will kill you
 //
 //divs & rect()s | rect(X, Y, Width, Height);
@@ -45,6 +45,6 @@ fill(blue); //the INK(ling)
 textAlign(CENTER, CENTER); //align x and y
 Size = 80;
 textFont(titleFont, Size);
-//textFont(footerFont, Size);
+textFont(footerFont, Size);
 text(title, titleX, titleY, titleWidth, titleHeight);
-//text(footer, footerX, footerY, footerWidth, footerHeight);
+text(footer, footerX, footerY, footerWidth, footerHeight);
