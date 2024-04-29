@@ -44,7 +44,7 @@ String playButton="('v')";
 PFont generalFont, titleFont, playButtonFont;
 //
 color backgroundColour, foregroundColour, lightlessBackground=0, darklessBackground=255; //greyscale is smaller than color, better for system performance
-color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FF0000; // hexademical, its base 16 thats so cool
+color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FD0000; // hexademical, its base 16 thats so cool
 color blue=#00FFB3;
 //
 boolean whiteMode=false;
@@ -197,26 +197,27 @@ void draw() {
   fill(rouge);
   if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) {
      fill(blue);
-     rect( exitButtonX+exitButtonWidth*1/7, exitButtonY+exitButtonHeight*1/7, exitButtonWidth*5/7, exitButtonHeight*5/7 );
-     fill(rouge);
+     rect(exitButtonX+exitButtonWidth*1/7, exitButtonY+exitButtonHeight*1/7, exitButtonWidth*5/7, exitButtonHeight*5/7 );
   } else {
      fill(rouge);
   }
+  //
   rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
-  fill(rouge);
-  if(mouseX>playButtonX && mouseX<playButtonX+playButtonWidth && mouseY>playButtonY && mouseY<playButtonY+playButtonHeight) {
-    fill(blue);
-    rect(playButtonX+playButtonWidth*1/7, playButtonY+playButtonHeight*1/7, playButtonWidth*5/7, playButtonHeight*5/7);
+  fill(blue);
+  if ( mouseX>playButtonX && mouseX<playButtonX+playButtonWidth && mouseY>playButtonY && mouseY<playButtonY+playButtonHeight ) {
     fill(ourple);
   } else {
-  fill(blue);
+  fill(rouge);
   }
+  //fill(foregroundColour);
 textAlign(CENTER, CENTER); //align x and y
+//Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER  | BOTTOM | BASELINE ]
 textFont(titleFont, Size);
 textFont(playButtonFont, Size);
 text(title, exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
 text(playButton, playButtonX, playButtonY, playButtonWidth, playButtonHeight);
-  println(mouseX, mouseY);
+//fill(foregroundColour);
+  //println(mouseX, mouseY);
 } //End draw
 //
 void keyPressed() { //listener
