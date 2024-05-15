@@ -1,12 +1,15 @@
-# MP project 2024 feb 6
+# MP project 2024 feb 6 (what i want)
 - [ ] music player
 - [x] images in readme
 - [x] make geometry 
 - [x] RITIGO
-- [ ] hitboxes but for uuuu
-- [x] <del>something will break immediately<del>
-- [ ] fix anything that breaks with <del>hot glue and duct tape</del> the power of friendship or somethin
-- [ ] complete to do list, or as much as i realistically can
+- [x] <del>something will break immediately</del>
 - [x] audio (sfx, music)
 - [x] minim installed
-- [ ] all 18 rectangle
+- [x] all 18 rectangle
+- [ ] working play button (music)
+- [ ] stop button
+- [ ] loop button (isat ref)
+- [ ] working music
+- [ ] a god damn frozen lemonade
+- [ ] the fucking minim import to fix itself so i dont have to look at it anymore
