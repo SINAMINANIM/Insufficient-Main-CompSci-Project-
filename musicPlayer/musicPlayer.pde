@@ -1,10 +1,11 @@
-/* documentation
+AHAH/* documentation
 library: sketch > import lib  >add lib > minim
 support webstie: https://code.compartmental.net/minim/
  - https://code.compartmental.net/minim/audioplayer_method_loop.html
  - loop(0) seems best for sfx
 */
 import ddf.minim.*;
+//WHY ARE YOU FUCKING BROKEN ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAAAAAAAAAAAAAAAAAHGHGHGHGHHGH im gonna cry a lil. my body hurt
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
@@ -58,9 +59,9 @@ void setup() {
   soundEffects1 = minim.loadFile( path );
   soundEffecter2 = minim.loadFile( path2 );
   //
-  //fonts fron op sys
+  //fonts fron OS
   //String[] fontList = PFont.list(); //to list all fonts on OS
-  //printArray(fontList); //lists fonts
+  //printArray(fontList); //display a lists fonts
   Size = 32;
   generalFont = createFont("Yu Gothic UI Light", Size);
   titleFont = createFont("Yu Gothic UI Light", Size);
@@ -119,7 +120,13 @@ void keyPressed() { //listener
     soundEffect_1();
   if (key==CODED && keyCode==ESC) exit();
     soundEffect_1();
-  if (key=='L' && key=='l');
+  if (key=='L' && key=='l') {
+    if (whiteMode == false) {
+      whiteMode = true;
+    } else {
+      whiteMode = false;
+    }
+  };
 } //End keyPressed
 //
 void mousePressed() { //listener 2: electric boogaloo  
