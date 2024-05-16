@@ -1,11 +1,12 @@
-AHAH/* documentation
+/* documentation
 library: sketch > import lib  >add lib > minim
 support webstie: https://code.compartmental.net/minim/
  - https://code.compartmental.net/minim/audioplayer_method_loop.html
  - loop(0) seems best for sfx
 */
 import ddf.minim.*;
-//WHY ARE YOU FUCKING BROKEN ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAAAAAAAAAAAAAAAAAHGHGHGHGHHGH im gonna cry a lil. my body hurt
+//[DEPRECATED] WHY ARE YOU FUCKING BROKEN ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAAAAAAAAAAAAAAAAAHGHGHGHGHHGH im gonna cry a lil. my body hurt [DEPRECATED]
+//^ found why it broke. rogue text. i am going to scream
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
@@ -16,7 +17,7 @@ import ddf.minim.ugens.*;
 Minim minim; //adds object to access all minim functions
 AudioPlayer soundEffects1; 
 AudioPlayer soundEffecter2;
-AudioPlayer playList1; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
+AudioPlayer playList; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
 //
 int appWidth, appHeight;
 int Size;
@@ -51,11 +52,13 @@ void setup() {
   String exitSound = "Winding Alarm Clock.mp3";
   String playSound = "Straw Squeak.mp3";
   String pathwaySfx = "../audio/sfx/"; //relative path
+  //String ;
+  //String ;
   //println ( pathwaySfx + exitSound );
   String path = sketchPath( pathwaySfx + exitSound ); //absolute path
   String path2 = sketchPath( pathwaySfx + playSound );
   //println ( path );
-  //playList1 = minim.loadFile( path );
+  //playList = minim.loadFile( path );
   soundEffects1 = minim.loadFile( path );
   soundEffecter2 = minim.loadFile( path2 );
   //
