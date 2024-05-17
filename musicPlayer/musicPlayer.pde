@@ -5,7 +5,7 @@ support webstie: https://code.compartmental.net/minim/
  - loop(0) seems best for sfx
 */
 import ddf.minim.*;
-//[DEPRECATED] WHY ARE YOU FUCKING BROKEN ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAAAAAAAAAAAAAAAAAHGHGHGHGHHGH im gonna cry a lil. my body hurt [DEPRECATED]
+//[DEPRECATED] WHY ARE YOU FUCKING BROKEN ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAAAAAAAAAAAAAAAAAHGHGHGHGHHGH [DEPRECATED]
 //^ found why it broke. rogue text. i am going to scream
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -32,6 +32,7 @@ color backgroundColour, foregroundColour, lightlessBackground=0, darklessBackgro
 color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FD0000, blue=#00FFB3; // hexademical, its base 16 thats so cool
 //
 boolean whiteMode=false;
+boolean dayMode=false; //THEY ARE DIFFERENT!!!!!!!!!!!!!
 //
 //
 void setup() {
