@@ -1,9 +1,9 @@
 /* documentation
-library: sketch > import lib  >add lib > minim
-support webstie: https://code.compartmental.net/minim/
+ library: sketch > import lib  >add lib > minim
+ support webstie: https://code.compartmental.net/minim/
  - https://code.compartmental.net/minim/audioplayer_method_loop.html
  - loop(0) seems best for sfx
-*/
+ */
 import ddf.minim.*;
 //[DEPRECATED] WHY ARE YOU FUCKING BROKEN ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAAAAAAAAAAAAAAAAAHGHGHGHGHHGH [DEPRECATED]
 //^ found why it broke. rogue text. i am going to scream
@@ -15,9 +15,9 @@ import ddf.minim.ugens.*;
 
 //Global Variables
 Minim minim; //adds object to access all minim functions
-AudioPlayer soundEffects1; 
+AudioPlayer soundEffects1;
 AudioPlayer soundEffecter2;
-AudioPlayer playList; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
+AudioPlayer[] playList1 = new AudioPlayer[1]; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
 //
 int appWidth, appHeight;
 int Size;
@@ -51,17 +51,18 @@ void setup() {
   //
   minim = new Minim(this); //loadfile from project folder (mp3 file in this case)
   String exitSound = "Winding Alarm Clock.mp3";
-  String playSound = "Straw Squeak.mp3";
+  String playSound = "Chicago - Freedom Trail Studio.mp3";
   String pathwaySfx = "../audio/sfx/"; //relative path
+  String pathwayMusic = "../audio/music/";
   //String ;
   //String ;
   //println ( pathwaySfx + exitSound );
   String path = sketchPath( pathwaySfx + exitSound ); //absolute path
-  String path2 = sketchPath( pathwaySfx + playSound );
+  String path2 = sketchPath( pathwayMusic + playSound );
   //println ( path );
-  //playList = minim.loadFile( path );
+  //playList = minim.loadFile( path ); defunct kept for hoarding
   soundEffects1 = minim.loadFile( path );
-  soundEffecter2 = minim.loadFile( path2 );
+  //playList1 = minim.loadFile( path2 );
   //
   //fonts fron OS
   //String[] fontList = PFont.list(); //to list all fonts on OS
@@ -93,10 +94,10 @@ void draw() {
   rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
   fill(rouge);
   if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) {
-     fill(blue);
-     rect(exitButtonX+exitButtonWidth*1/7, exitButtonY+exitButtonHeight*1/7, exitButtonWidth*5/7, exitButtonHeight*5/7 );
+    fill(blue);
+    rect(exitButtonX+exitButtonWidth*1/7, exitButtonY+exitButtonHeight*1/7, exitButtonWidth*5/7, exitButtonHeight*5/7 );
   } else {
-     fill(rouge);
+    fill(rouge);
   }
   //
   rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
@@ -104,36 +105,52 @@ void draw() {
   if ( mouseX>playButtonX && mouseX<playButtonX+playButtonWidth && mouseY>playButtonY && mouseY<playButtonY+playButtonHeight ) {
     fill(ourple);
   } else {
-  fill(rouge);
+    fill(rouge);
   }
   //fill(foregroundColour);
-textAlign(CENTER, CENTER); //align x and y
-//Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER  | BOTTOM | BASELINE ]
-textFont(titleFont, Size);
-textFont(playButtonFont, Size);
-text(title, exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
-text(playButton, playButtonX, playButtonY, playButtonWidth, playButtonHeight);
-//fill(foregroundColour);
+  textAlign(CENTER, CENTER); //align x and y
+  //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER  | BOTTOM | BASELINE ]
+  textFont(titleFont, Size);
+  textFont(playButtonFont, Size);
+  text(title, exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);
+  text(playButton, playButtonX, playButtonY, playButtonWidth, playButtonHeight);
+  //fill(foregroundColour);
   //println(mouseX, mouseY);
 } //End draw
 //
 void keyPressed() { //listener
-//if (key=='' && key==''); | letter button setup
-//if (key==CODED && keyCode==) ; | word button setup
-  if (key=='Q' || key=='q') exit();
-    soundEffect_1();
-  if (key==CODED && keyCode==ESC) exit();
-    soundEffect_1();
-  if (key=='L' && key=='l') {
-    if (whiteMode == false) {
-      whiteMode = true;
+  //if (key=='' && key==''); | letter button setup
+  //if (key==CODED && keyCode==) ; | word button setup
+  //local, might be global
+  //int skip = 1000; //basic preference
+  //if (key=='H' || key=='h') skip = 5000; 
+  //if (key=='G' || key=='g') skip = 10000; 
+  if (key=='G' || key=='g') { 
+    if ( skip == 5000 ) {
+      skip = 10000;
     } else {
-      whiteMode = false;
-    }
-  };
+      skip = 5000;
+   }
+  }
+  if (key=='Q' || key=='q') exit();
+  soundEffect_1();
+  if (key==CODED && keyCode==ESC) exit();
+  soundEffect_1();
+    //if ( key=='F' || key=='f' ) playList1[0].skip( skip ) ; //skip forward 1 second (1000  millisecs)
+    //if ( key=='R' || key=='r' ) playList1[0].skip( -skip ) ; //skip backward 1 second (-1000 millisecs)
+
+  /*
+    if (key=='L' && key=='l') {
+   if (whiteMode == false) {
+   whiteMode = true;
+   } else {
+   whiteMode = false;
+   }
+   };
+   */
 } //End keyPressed
 //
-void mousePressed() { //listener 2: electric boogaloo  
+void mousePressed() { //listener 2: electric boogaloo
   if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight )
   {
     soundEffect_1();
