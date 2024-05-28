@@ -18,6 +18,7 @@ Minim minim; //adds object to access all minim functions
 AudioPlayer soundEffects1;
 AudioPlayer soundEffecter2;
 AudioPlayer[] playList1 = new AudioPlayer[1]; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
+AudioMetaData[] playListMetaData;
 //
 int appWidth, appHeight;
 int Size;
@@ -33,6 +34,7 @@ color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FD0000, blue=#0
 //
 boolean whiteMode=false;
 boolean dayMode=false; //THEY ARE DIFFERENT!!!!!!!!!!!!!
+Boolean looping=false;
 //
 //
 void setup() {
