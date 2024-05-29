@@ -12,4 +12,5 @@
 - [ ] loop button (isat ref)
 - [ ] working music
 - [ ] a god damn frozen lemonade
-- [ ] the fucking minim import to fix itself so i dont have to look at it anymore
+- [x] the fucking minim import to fix itself so i dont have to look at it anymore
+- [ ] 
