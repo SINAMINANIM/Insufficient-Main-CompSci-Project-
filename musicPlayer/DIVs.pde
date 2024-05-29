@@ -77,10 +77,6 @@ float exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight;
   songNameY = appHeight*15/100;
   songNameWidth = appWidth*1/3;
   songNameHeight = appHeight*4/100;
-  exitButtonContainerX = appWidth*112/128;
-  exitButtonContainerY = appHeight*85/100;
-  exitButtonContainerWidth = appWidth*23/240;
-  exitButtonContainerHeight = appHeight*14/120;
   exitButtonX = appWidth*57/64;
   exitButtonY = appHeight*87/100;
   exitButtonWidth = appWidth*1/16;
@@ -108,7 +104,6 @@ float exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight;
    rect(authorNameX, authorNameY, authorNameWidth, authorNameHeight);
    rect(songNameX, songNameY, songNameWidth, songNameHeight);
    rect(settingsX, settingY, settingsWidth, settingsHeight);
-   rect(exitButtonContainerX, exitButtonContainerY, exitButtonContainerWidth, exitButtonContainerHeight);
    */
   rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
   rect(exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);

@@ -5,8 +5,6 @@
  - loop(0) seems best for sfx
  */
 import ddf.minim.*;
-//[DEPRECATED] WHY ARE YOU FUCKING BROKEN ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RAAAAAAAAAAAAAAAAAHGHGHGHGHHGH [DEPRECATED]
-//^ found why it broke. rogue text. i am going to scream
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
 import ddf.minim.signals.*;
@@ -15,10 +13,14 @@ import ddf.minim.ugens.*;
 
 //Global Variables
 Minim minim; //adds object to access all minim functions
+int numberSongs = 3;
+int numberSFX = 2;
 AudioPlayer soundEffects1;
 AudioPlayer soundEffecter2;
-AudioPlayer[] playList1 = new AudioPlayer[1]; //creates 'play list' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
-AudioMetaData[] playListMetaData;
+AudioPlayer[] playList1 = new AudioPlayer [ numberSongs ]; //creates 'playlist' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
+AudioPlayer[] soundEffects = new AudioPlayer [ numberSFX ];
+AudioMetaData[] AudioMetaData = new AudioMetaData [ numberSongs ];
+int currentsong = 0;
 //
 int appWidth, appHeight;
 int Size;
@@ -33,38 +35,38 @@ color backgroundColour, foregroundColour, lightlessBackground=0, darklessBackgro
 color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FD0000, blue=#00FFB3; // hexademical, its base 16 thats so cool
 //
 boolean whiteMode=false;
-boolean dayMode=false; //THEY ARE DIFFERENT!!!!!!!!!!!!!
+boolean dayMode=false; //difference(?)
 Boolean looping=false;
-//
+//prevents .rewind in draw() from getting inappropriately acccessed between .play, .loop(1), .loop()
 //
 void setup() {
   //concatenation AMD inspecting variabels w character escapes
   println("Width: "+width, "\tHeight: "+height, "\tDisplay Width: "+displayWidth, "\tDisplay Height: "+displayHeight);
   //for NULL: all values are null until size(), otherwise arithmetic errors
   println("example formula: add 1 to the width:", width+1);
-  //size(419, 500); //WIDTH, HEIHT
+  //size(419, 500);
   fullScreen(); //displayWidth, displayHeight
   appWidth = displayWidth;
   appHeight = displayHeight;
-  //ladscape is hardcoded because who the hell uses a vertical monitor (i saw one once and it was very odd)
+  //ladscape is hardcoded because who the hell uses a vertical monitor (i saw one once and it was cursed)
   //println(appWidth, appHeight);
   String displayInstructions = ( appWidth >= appHeight ) ? "we're good ^q^": "WHAT ARE YOU DOING";
   println(displayInstructions);
   //
   minim = new Minim(this); //loadfile from project folder (mp3 file in this case)
-  String exitSound = "Winding Alarm Clock.mp3";
-  String playSound = "Chicago - Freedom Trail Studio.mp3";
   String pathwaySfx = "../audio/sfx/"; //relative path
   String pathwayMusic = "../audio/music/";
+  String Chicago = "Chicago - Freedom Trail Studio";
+  String alarmClock = "Winding Alarm Clock";
+  String fileExtension = ".mp3";
   //String ;
   //String ;
-  //println ( pathwaySfx + exitSound );
-  String path = sketchPath( pathwaySfx + exitSound ); //absolute path
-  String path2 = sketchPath( pathwayMusic + playSound );
-  //println ( path );
-  //playList = minim.loadFile( path ); defunct kept for hoarding
-  soundEffects1 = minim.loadFile( path );
-  //playList1 = minim.loadFile( path2 );
+  //println ( pathwaySfx + alarmClock );
+  String pathSfx = sketchPath( pathwaySfx + alarmClock + fileExtension ); //absolute path
+  String pathMusic = sketchPath( pathwayMusic + Chicago + fileExtension );
+  //println ( pathSfx );
+  soundEffects[0] = minim.loadFile( pathSfx );
+  playList1[0] = minim.loadFile( pathMusic );
   //
   //fonts fron OS
   //String[] fontList = PFont.list(); //to list all fonts on OS
@@ -100,7 +102,7 @@ void draw() {
     rect(exitButtonX+exitButtonWidth*1/7, exitButtonY+exitButtonHeight*1/7, exitButtonWidth*5/7, exitButtonHeight*5/7 );
   } else {
     fill(rouge);
-  }
+  };
   //
   rect(playButtonX, playButtonY, playButtonWidth, playButtonHeight);
   fill(blue);
@@ -108,7 +110,7 @@ void draw() {
     fill(ourple);
   } else {
     fill(rouge);
-  }
+  };
   //fill(foregroundColour);
   textAlign(CENTER, CENTER); //align x and y
   //Values: [ LEFT | CENTER | RIGHT ] & [ TOP | CENTER  | BOTTOM | BASELINE ]
@@ -124,9 +126,9 @@ void keyPressed() { //listener
   //if (key=='' && key==''); | letter button setup
   //if (key==CODED && keyCode==) ; | word button setup
   //local, might be global
-  //int skip = 1000; //basic preference
-  //if (key=='H' || key=='h') skip = 5000; 
-  //if (key=='G' || key=='g') skip = 10000; 
+  int skip = 1000; //basic preference
+  if (key=='H' || key=='h') skip = 5000; 
+  if (key=='G' || key=='g') skip = 10000; 
   if (key=='G' || key=='g') { 
     if ( skip == 5000 ) {
       skip = 10000;
@@ -140,16 +142,14 @@ void keyPressed() { //listener
   soundEffect_1();
     //if ( key=='F' || key=='f' ) playList1[0].skip( skip ) ; //skip forward 1 second (1000  millisecs)
     //if ( key=='R' || key=='r' ) playList1[0].skip( -skip ) ; //skip backward 1 second (-1000 millisecs)
-
-  /*
     if (key=='L' && key=='l') {
-   if (whiteMode == false) {
-   whiteMode = true;
-   } else {
-   whiteMode = false;
-   }
+      if (whiteMode == false) {
+        whiteMode = true;
+      } else {
+        whiteMode = false;
+      }
    };
-   */
+   
 } //End keyPressed
 //
 void mousePressed() { //listener 2: electric boogaloo

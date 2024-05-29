@@ -2,7 +2,7 @@
 //
 void soundEffect_1() {
   int loopOnce = 0;
-  int sfxTimer = 2650; //also paremter in milliseconds
+  int sfxTimer = 2600; //also paremter in milliseconds
   soundEffects1.loop(loopOnce);
   delay(sfxTimer); //parameter in milliseconds
   exit();
