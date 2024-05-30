@@ -1,2 +1,1 @@
-i cannot sleep :'D
-i tried to but i just ended up laying in my bed for 4 hours 
+man i gotta stop staying up til 12:30 AM playing WoW

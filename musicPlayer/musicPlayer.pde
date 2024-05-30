@@ -27,7 +27,7 @@ int Size;
 //
 //
 String title="Exit";
-String playButton="('v')";
+String playButton="▷";
 //
 PFont generalFont, titleFont, playButtonFont;
 //
@@ -92,6 +92,8 @@ void setup() {
 } //End setup
 //
 void draw() {
+  if (!playList1[currentsong].isPlaying()) println("nothings happening, get going");
+  if (playList1[currentsong].isPlaying && !playList[currentsong].isLooping()) println("play once");
   background(backgroundColour);
   //fill(ourple);
   //if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) fill(Yellow);
