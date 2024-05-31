@@ -15,12 +15,11 @@ import ddf.minim.ugens.*;
 Minim minim; //adds object to access all minim functions
 int numberSongs = 3;
 int numberSFX = 2;
-AudioPlayer soundEffects1;
 AudioPlayer soundEffecter2;
 AudioPlayer[] playList1 = new AudioPlayer [ numberSongs ]; //creates 'playlist' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
 AudioPlayer[] soundEffects = new AudioPlayer [ numberSFX ];
 AudioMetaData[] AudioMetaData = new AudioMetaData [ numberSongs ];
-int currentsong = 0;
+int currentsong = numberSongs - numberSongs;
 //
 int appWidth, appHeight;
 int Size;
@@ -56,17 +55,21 @@ void setup() {
   minim = new Minim(this); //loadfile from project folder (mp3 file in this case)
   String pathwaySfx = "../audio/sfx/"; //relative path
   String pathwayMusic = "../audio/music/";
-  String Chicago = "Chicago - Freedom Trail Studio";
+  String chicago = "Chicago - Freedom Trail Studio";
+  String limousines = "Limousines - TrackTribe";
+  String iceCream = "You Scream I Scream We All Scream For Ice Cream - Freedom Trail Studio";
   String alarmClock = "Winding Alarm Clock";
   String fileExtension = ".mp3";
   //String ;
-  //String ;
   //println ( pathwaySfx + alarmClock );
   String pathSfx = sketchPath( pathwaySfx + alarmClock + fileExtension ); //absolute path
-  String pathMusic = sketchPath( pathwayMusic + Chicago + fileExtension );
+  String pathChicago = sketchPath( pathwayMusic + chicago + fileExtension );
+  String pathLimousines = sketchPath( pathwayMusic + limousines + fileExtension );
+  String pathIceCream = sketchPath( pathwayMusic + iceCream + fileExtension );
+  
   //println ( pathSfx );
   soundEffects[0] = minim.loadFile( pathSfx );
-  playList1[0] = minim.loadFile( pathMusic );
+  playList1[0] = minim.loadFile( pathChicago );
   //
   //fonts fron OS
   //String[] fontList = PFont.list(); //to list all fonts on OS
@@ -92,8 +95,9 @@ void setup() {
 } //End setup
 //
 void draw() {
-  if (!playList1[currentsong].isPlaying()) println("nothings happening, get going");
-  if (playList1[currentsong].isPlaying && !playList[currentsong].isLooping()) println("play once");
+  
+  //if (!playList1[currentsong].isPlaying()) println("nothings happening, get going");
+  //if (playList1[currentsong].isPlaying && !playList[currentsong].isLooping()) println("play once");
   background(backgroundColour);
   //fill(ourple);
   //if ( mouseX>exitButtonX && mouseX<exitButtonX+exitButtonWidth && mouseY>exitButtonY && mouseY<exitButtonY+exitButtonHeight ) fill(Yellow);
