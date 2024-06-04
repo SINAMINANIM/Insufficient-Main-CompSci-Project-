@@ -15,14 +15,17 @@ import ddf.minim.ugens.*;
 Minim minim; //adds object to access all minim functions
 int numberSongs = 3;
 int numberSFX = 2;
+String[] filePathNameMusic = new String[numberSongs];
+String[] filePathNameSfx = new String[numberSFX];
 AudioPlayer soundEffecter2;
-AudioPlayer[] playList1 = new AudioPlayer [ numberSongs ]; //creates 'playlist' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
-AudioPlayer[] soundEffects = new AudioPlayer [ numberSFX ];
+AudioPlayer playList1 = new AudioPlayer [ numberSongs ]; //creates 'playlist' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
+AudioPlayer soundEffects = new AudioPlayer [ numberSFX ];
 AudioMetaData[] AudioMetaData = new AudioMetaData [ numberSongs ];
-int currentsong = numberSongs - numberSongs;
+int currentSong = numberSongs - numberSongs;
 //
 int appWidth, appHeight;
 int Size;
+int skip = 5000; //default pref
 //
 //
 String title="Exit";
@@ -62,14 +65,18 @@ void setup() {
   String fileExtension = ".mp3";
   //String ;
   //println ( pathwaySfx + alarmClock );
-  String pathSfx = sketchPath( pathwaySfx + alarmClock + fileExtension ); //absolute path
+  String pathQuitSfx = sketchPath( pathwaySfx + alarmClock + fileExtension ); //absolute path
+  filePathNameMusic[currentSong+=1] = pathwayMusic + limousines + fileExtension;
+  /*
   String pathChicago = sketchPath( pathwayMusic + chicago + fileExtension );
   String pathLimousines = sketchPath( pathwayMusic + limousines + fileExtension );
   String pathIceCream = sketchPath( pathwayMusic + iceCream + fileExtension );
+  */
   
   //println ( pathSfx );
-  soundEffects[0] = minim.loadFile( pathSfx );
-  playList1[0] = minim.loadFile( pathChicago );
+  soundEffects = minim.loadFile( pathQuitSfx );
+  println (currentSong, filePathNameMusic[currentSong]);
+  
   //
   //fonts fron OS
   //String[] fontList = PFont.list(); //to list all fonts on OS
@@ -126,22 +133,29 @@ void draw() {
   text(playButton, playButtonX, playButtonY, playButtonWidth, playButtonHeight);
   //fill(foregroundColour);
   //println(mouseX, mouseY);
+  println ( "Current song, Random Number", currentSong);
+  //auto play
+  if (playList1.isPlaying()) {
+    if (!playList1.isLooping() && looping==true) looping==false; //protects .loop() from .rewing()
+  } else if ( looping == false && !playList1.isPlaying() && playList1.length() < 100000 ) {}
 } //End draw
 //
 void keyPressed() { //listener
   //if (key=='' && key==''); | letter button setup
   //if (key==CODED && keyCode==) ; | word button setup
   //local, might be global
-  int skip = 1000; //basic preference
-  if (key=='H' || key=='h') skip = 5000; 
-  if (key=='G' || key=='g') skip = 10000; 
+  
+  //int skip = 1000; //basic preference
+  //if (key=='H' || key=='h') skip = 5000; 
+  //if (key=='G' || key=='g') skip = 10000; 
   if (key=='G' || key=='g') { 
     if ( skip == 5000 ) {
-      skip = 10000;
+      skip = int ( playList1.length()*0.25);
     } else {
       skip = 5000;
    }
   }
+  if (key=='A' && key=='a') currentSong = int (random(numberSongs - numberSongs));
   if (key=='Q' || key=='q') exit();
   soundEffect_1();
   if (key==CODED && keyCode==ESC) exit();
