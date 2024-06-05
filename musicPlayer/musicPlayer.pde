@@ -18,8 +18,8 @@ int numberSFX = 2;
 String[] filePathNameMusic = new String[numberSongs];
 String[] filePathNameSfx = new String[numberSFX];
 AudioPlayer soundEffecter2;
-AudioPlayer playList1 = new AudioPlayer [ numberSongs ]; //creates 'playlist' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
-AudioPlayer soundEffects = new AudioPlayer [ numberSFX ];
+AudioPlayer[] playList1 = new AudioPlayer [ numberSongs ]; //creates 'playlist' variable holding extesions WAV, AIFF, AU, SND, and MP3 files.
+AudioPlayer[] soundEffects = new AudioPlayer [ numberSFX ];
 AudioMetaData[] AudioMetaData = new AudioMetaData [ numberSongs ];
 int currentSong = numberSongs - numberSongs;
 //
@@ -74,7 +74,7 @@ void setup() {
   */
   
   //println ( pathSfx );
-  soundEffects = minim.loadFile( pathQuitSfx );
+  soundEffects[0] = minim.loadFile( pathQuitSfx );
   println (currentSong, filePathNameMusic[currentSong]);
   
   //
