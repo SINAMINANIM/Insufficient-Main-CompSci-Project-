@@ -66,7 +66,9 @@ void setup() {
   //String ;
   //println ( pathwaySfx + alarmClock );
   String pathQuitSfx = sketchPath( pathwaySfx + alarmClock + fileExtension ); //absolute path
+  filePathNameMusic[currentSong+=1] = pathwayMusic + chicago + fileExtension;
   filePathNameMusic[currentSong+=1] = pathwayMusic + limousines + fileExtension;
+  filePathNameMusic[currentSong+=1] = pathwayMusic + iceCream + fileExtension;
   /*
   String pathChicago = sketchPath( pathwayMusic + chicago + fileExtension );
   String pathLimousines = sketchPath( pathwayMusic + limousines + fileExtension );
