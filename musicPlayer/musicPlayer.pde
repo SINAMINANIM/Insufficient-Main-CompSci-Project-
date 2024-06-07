@@ -36,8 +36,7 @@ PFont generalFont, titleFont, playButtonFont;
 color backgroundColour, foregroundColour, lightlessBackground=0, darklessBackground=255; //greyscale is smaller than color, better for system performance
 color White=255, Yellow=#FFFF00, Black=0, ourple=#FF00FF, rouge=#FD0000, blue=#00FFB3; // hexademical, its base 16 thats so cool
 //
-boolean whiteMode=false;
-boolean dayMode=false; //difference(?)
+boolean whiteMode=true, dayMode=false, nightMode=false;//difference(?)
 Boolean looping=false;
 //prevents .rewind in draw() from getting inappropriately acccessed between .play, .loop(1), .loop()
 //
@@ -152,7 +151,7 @@ void keyPressed() { //listener
   //if (key=='G' || key=='g') skip = 10000; 
   if (key=='G' || key=='g') { 
     if ( skip == 5000 ) {
-      skip = int ( playList1.length()*0.25);
+      skip = int ( playList1.length*0.25);
     } else {
       skip = 5000;
    }
